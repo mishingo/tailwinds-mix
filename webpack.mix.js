@@ -4,19 +4,18 @@ const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plug
 const tailwindcss = require('tailwindcss');
 
 mix.js('src/js/app.js', 'js/')
-  //.sass('src/scss/app.scss', 'css/')
+  .sass('src/scss/app.scss', 'css/')
+  .options({
+    processCssUrls: false,
+    postCss: [ tailwindcss('./tailwind-config.js') ],
+  })
   .setPublicPath('dist')
   .setResourceRoot("../")
-  //  .sourceMaps()
-  //  .webpackConfig({ devtool: "inline-source-map" })
   .browserSync({
      files: ["dist/**/*"],
      server: "dist",
      proxy:''
   })
-  .postCss('src/css/app.css', 'css/', [
-    tailwindcss('./tailwind-config.js'),
-  ])
   .webpackConfig({
     plugins: [
       new HtmlWebpackPlugin({
