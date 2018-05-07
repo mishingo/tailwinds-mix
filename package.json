@@ -25,6 +25,8 @@
     "pug-loader": "^2.3.0"
   },
   "dependencies": {
+    "hoek": "4.2.1",
+    "marked": "0.3.9",
     "materialize-css": "^0.100.2",
     "tailwindcss": "^0.5.2"
   }
